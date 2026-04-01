@@ -1,0 +1,849 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-22zbxewm"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>slamlab_core | SLAMLab</title><script>if (!localStorage.getItem('starlight-theme')) { document.documentElement.dataset.theme = 'light'; localStorage.setItem('starlight-theme', 'light'); }</script><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v6.1.1"/><meta name="generator" content="Starlight v0.38.2"/><meta property="og:title" content="slamlab_core"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Configuration reference for slamlab_core."/><meta property="og:site_name" content="SLAMLab"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Configuration reference for slamlab_core."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/_astro/common.S5F0InnF.css">
+<link rel="stylesheet" href="/_astro/Code.zQCYFEc2.css"><script type="module" src="/_astro/page.iA5YvrB-.js"></script></head> <body class="astro-22zbxewm"> <a href="#_top" class="astro-w5qmmdik">Skip to content</a> <div class="page sl-flex astro-mdfqizmu"> <header class="header astro-mdfqizmu"><div class="header astro-kimmz57r"> <div class="title-wrapper sl-flex astro-kimmz57r"> <a href="/" class="site-title sl-flex astro-vg7k2n63">  <img class="astro-vg7k2n63" alt src="/_astro/slamlab-logo-no-text-400x400.CZCXsYiP.png" width="400" height="400">  <span class="astro-vg7k2n63" translate="no"> SLAMLab </span> </a> </div> <div class="sl-flex print:hidden astro-kimmz57r"> <site-search class="astro-kimmz57r astro-fmqkuj3n" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-fmqkuj3n"> <svg aria-hidden="true" class="astro-fmqkuj3n astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-fmqkuj3n" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-fmqkuj3n" style="display: none;"> <kbd class="astro-fmqkuj3n">Ctrl</kbd><kbd class="astro-fmqkuj3n">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-fmqkuj3n"> <div class="dialog-frame sl-flex astro-fmqkuj3n">  <button data-close-modal class="sl-flex md:sl-hidden astro-fmqkuj3n"> Cancel </button> <div class="search-container astro-fmqkuj3n"> <div id="starlight__search" class="astro-fmqkuj3n"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.CYxDRxxQ.js"></script>  </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kimmz57r"> <div class="sl-flex social-icons astro-kimmz57r"> <a href="https://www.youtube.com/@SLAMLabApp" rel="me" class="sl-flex astro-vhfdw3uo"><span class="sr-only astro-vhfdw3uo">YouTube</span><svg aria-hidden="true" class="astro-vhfdw3uo astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M23.5 6.2A3 3 0 0 0 21.4 4c-1.9-.5-9.4-.5-9.4-.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.3C0 8 0 12 0 12s0 4 .5 5.8A3 3 0 0 0 2.6 20c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2c.5-2 .5-5.9.5-5.9s0-4-.5-5.8zm-14 9.4V8.4l6.3 3.6-6.3 3.6z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-pfx2plvc"> <span class="sr-only astro-pfx2plvc">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-pfx2plvc astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-pfx2plvc"> <option value="dark" class="astro-pfx2plvc">Dark</option><option value="light" class="astro-pfx2plvc">Light</option><option value="auto" selected class="astro-pfx2plvc">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-pfx2plvc astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label> </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div></header> <nav class="sidebar print:hidden astro-mdfqizmu" aria-label="Main"> <starlight-menu-button class="print:hidden astro-awhtjqc6"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-awhtjqc6"> <svg aria-hidden="true" class="open-menu astro-awhtjqc6 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-awhtjqc6 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>  <div id="starlight__sidebar" class="sidebar-pane astro-mdfqizmu"> <div class="sidebar-content sl-flex astro-mdfqizmu"> <sl-sidebar-state-persist data-hash="0lbyh05" class="astro-td337gct"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-zjqmvgl5"> <li class="astro-zjqmvgl5"> <a href="/getting-started/" class="large astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Getting Started</span>  </a> </li><li class="astro-zjqmvgl5"> <details open class="astro-zjqmvgl5"> <summary class="astro-zjqmvgl5"> <span class="group-label astro-zjqmvgl5"> <span class="large astro-zjqmvgl5">SLAM Core</span>  </span> <svg aria-hidden="true" class="caret astro-zjqmvgl5 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-zjqmvgl5"> <li class="astro-zjqmvgl5"> <a href="/slam-core/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Overview</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/slam-core/artifacts/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Artifacts</span>  </a> </li> </ul> </details> </li><li class="astro-zjqmvgl5"> <details open class="astro-zjqmvgl5"> <summary class="astro-zjqmvgl5"> <span class="group-label astro-zjqmvgl5"> <span class="large astro-zjqmvgl5">Executables</span>  </span> <svg aria-hidden="true" class="caret astro-zjqmvgl5 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-zjqmvgl5"> <li class="astro-zjqmvgl5"> <a href="/executables/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Overview</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/executables/slamlab-offline/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab-offline</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/executables/slamlab-visualization/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab-visualization</span>  </a> </li> </ul> </details> </li><li class="astro-zjqmvgl5"> <details open class="astro-zjqmvgl5"> <summary class="astro-zjqmvgl5"> <span class="group-label astro-zjqmvgl5"> <span class="large astro-zjqmvgl5">ROS Package</span>  </span> <svg aria-hidden="true" class="caret astro-zjqmvgl5 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <ul class="astro-zjqmvgl5"> <li class="astro-zjqmvgl5"> <a href="/ros/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Overview</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/ros/slam/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slam</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/ros/gnss-to-utm-pose/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">gnss_to_utm_pose</span>  </a> </li> </ul> </details> </li><li class="astro-zjqmvgl5"> <details open class="astro-zjqmvgl5"> <summary class="astro-zjqmvgl5"> <span class="group-label astro-zjqmvgl5"> <span class="large astro-zjqmvgl5">Configuration</span>  </span> <svg aria-hidden="true" class="caret astro-zjqmvgl5 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <ul class="astro-zjqmvgl5"> <li class="astro-zjqmvgl5"> <a href="/configuration/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Overview</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/configuration/slamlab-core/" aria-current="page" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab_core</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/configuration/slamlab-global-map/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab_global_map</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/configuration/slamlab-offline/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab_offline</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/configuration/slamlab-visualization/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">slamlab_visualization</span>  </a> </li><li class="astro-zjqmvgl5"> <a href="/configuration/template/" class="astro-zjqmvgl5"> <span class="astro-zjqmvgl5">Template</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist> <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-xdlb5tc2"> <div class="social-icons astro-xdlb5tc2"> <a href="https://www.youtube.com/@SLAMLabApp" rel="me" class="sl-flex astro-vhfdw3uo"><span class="sr-only astro-vhfdw3uo">YouTube</span><svg aria-hidden="true" class="astro-vhfdw3uo astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M23.5 6.2A3 3 0 0 0 21.4 4c-1.9-.5-9.4-.5-9.4-.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.3C0 8 0 12 0 12s0 4 .5 5.8A3 3 0 0 0 2.6 20c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2c.5-2 .5-5.9.5-5.9s0-4-.5-5.8zm-14 9.4V8.4l6.3 3.6-6.3 3.6z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-pfx2plvc"> <span class="sr-only astro-pfx2plvc">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-pfx2plvc astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-pfx2plvc"> <option value="dark" class="astro-pfx2plvc">Dark</option><option value="light" class="astro-pfx2plvc">Light</option><option value="auto" selected class="astro-pfx2plvc">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-pfx2plvc astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label> </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div> </div> </div> </div> </nav> <div class="main-frame astro-mdfqizmu">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-hyuy2rkj"> <aside class="right-sidebar-container print:hidden astro-hyuy2rkj"> <div class="right-sidebar astro-hyuy2rkj"> <script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.hwBsy0Mo.js"></script><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js"></script><div class="lg:sl-hidden astro-ylwji6gd"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-le6b4efl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-le6b4efl"><details id="starlight__mobile-toc" class="astro-le6b4efl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-le6b4efl"><span class="toggle sl-flex astro-le6b4efl">On this page<svg aria-hidden="true" class="caret astro-le6b4efl astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-le6b4efl"></span></summary><div class="dropdown astro-le6b4efl"><ul class="isMobile astro-lscqe37e" style="--depth: 0;"> <li class="astro-lscqe37e" style="--depth: 0;"> <a href="#_top" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#clouds" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">clouds</span> </a> <ul class="isMobile astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#distance_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">distance_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#intensity_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">intensity_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#profile_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">profile_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#normal_estimation" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">normal_estimation</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_planes" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_planes</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#matching" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">matching</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#local_map" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">local_map</span> </a> <ul class="isMobile astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_planes-1" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_planes</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#prior_map" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">prior_map</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#icp" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">icp</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#loop_closure_detection" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">loop_closure_detection</span> </a> <ul class="isMobile astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#matching_of_key_clouds" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">matching_of_key_clouds</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#trajectory" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">trajectory</span> </a> <ul class="isMobile astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#fixed_lag_smoother" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">fixed_lag_smoother</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#imu-optional" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">imu (optional)</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#absolute_position_measurements-optional" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">absolute_position_measurements (optional)</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#static_transforms" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">static_transforms</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#initial_base_pose" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">initial_base_pose</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#artifacts" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">artifacts</span> </a> <ul class="isMobile astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#save_clouds" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">save_clouds</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#debug_mode" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">debug_mode</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#send_visualization_data" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">send_visualization_data</span> </a>  </li> </ul></div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-ylwji6gd"><div class="sl-container astro-ylwji6gd"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-lscqe37e" style="--depth: 0;"> <li class="astro-lscqe37e" style="--depth: 0;"> <a href="#_top" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#clouds" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">clouds</span> </a> <ul class="astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#distance_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">distance_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#intensity_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">intensity_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#profile_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">profile_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_filter" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_filter</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#normal_estimation" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">normal_estimation</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_planes" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_planes</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#matching" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">matching</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#local_map" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">local_map</span> </a> <ul class="astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#voxel_planes-1" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">voxel_planes</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#prior_map" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">prior_map</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#icp" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">icp</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#loop_closure_detection" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">loop_closure_detection</span> </a> <ul class="astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#matching_of_key_clouds" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">matching_of_key_clouds</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#trajectory" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">trajectory</span> </a> <ul class="astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#fixed_lag_smoother" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">fixed_lag_smoother</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#imu-optional" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">imu (optional)</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#absolute_position_measurements-optional" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">absolute_position_measurements (optional)</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#static_transforms" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">static_transforms</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 1;"> <a href="#initial_base_pose" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">initial_base_pose</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#artifacts" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">artifacts</span> </a> <ul class="astro-lscqe37e" style="--depth: 1;"> <li class="astro-lscqe37e" style="--depth: 1;"> <a href="#save_clouds" class="astro-lscqe37e" style="--depth: 1;"> <span class="astro-lscqe37e" style="--depth: 1;">save_clouds</span> </a>  </li> </ul> </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#debug_mode" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">debug_mode</span> </a>  </li><li class="astro-lscqe37e" style="--depth: 0;"> <a href="#send_visualization_data" class="astro-lscqe37e" style="--depth: 0;"> <span class="astro-lscqe37e" style="--depth: 0;">send_visualization_data</span> </a>  </li> </ul></nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-hyuy2rkj">  <main data-pagefind-body class="astro-22zbxewm" lang="en" dir="ltr">    <div class="content-panel astro-u32fq4a7"> <div class="sl-container astro-u32fq4a7"> <h1 id="_top" class="astro-zyytb24e">slamlab_core</h1> </div> </div> <div class="content-panel astro-u32fq4a7"> <div class="sl-container astro-u32fq4a7"> <div class="sl-markdown-content"> <p>The <code dir="auto">slamlab_core</code> section configures the SLAM pipeline: point cloud preprocessing, matching, local map, ICP registration, trajectory estimation, and output artifacts.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="clouds">clouds</h2><a class="sl-anchor-link" href="#clouds"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “clouds”</span></a></div>
+<p>The following parameters apply to the original incoming point clouds.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="distance_filter">distance_filter</h3><a class="sl-anchor-link" href="#distance_filter"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “distance_filter”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Filter points by distance from sensor origin</td></tr><tr><td><code dir="auto">min_distance</code></td><td>float</td><td><code dir="auto">0.0</code></td><td>Minimum distance in meters</td></tr><tr><td><code dir="auto">max_distance</code></td><td>float</td><td><code dir="auto">.inf</code></td><td>Maximum distance in meters</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="intensity_filter">intensity_filter</h3><a class="sl-anchor-link" href="#intensity_filter"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “intensity_filter”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Filter points by intensity</td></tr><tr><td><code dir="auto">min_intensity</code></td><td>float</td><td><code dir="auto">0.0</code></td><td>Minimum intensity</td></tr><tr><td><code dir="auto">max_intensity</code></td><td>float</td><td><code dir="auto">.inf</code></td><td>Maximum intensity</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="profile_filter">profile_filter</h3><a class="sl-anchor-link" href="#profile_filter"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “profile_filter”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Filtering of rows and columns of an organized point cloud</td></tr><tr><td><code dir="auto">row_interval</code></td><td>uint32</td><td><code dir="auto">1</code></td><td>Sample every Nth row</td></tr><tr><td><code dir="auto">col_interval</code></td><td>uint32</td><td><code dir="auto">1</code></td><td>Sample every Nth column</td></tr></tbody></table>
+<p>For unorganized point clouds, the cloud is interpreted as <code dir="auto">N x 1</code> (N rows, 1 column). In that case, <code dir="auto">row_interval</code> performs index-based subsampling (for example, <code dir="auto">row_interval=2</code> keeps every second point), while <code dir="auto">col_interval</code> is ignored.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="voxel_filter">voxel_filter</h3><a class="sl-anchor-link" href="#voxel_filter"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “voxel_filter”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Voxel-based downsampling - keeps first point in each voxel</td></tr><tr><td><code dir="auto">voxel_size</code></td><td>float</td><td><code dir="auto">0.1</code></td><td>Voxel grid size in meters</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="normal_estimation">normal_estimation</h3><a class="sl-anchor-link" href="#normal_estimation"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “normal_estimation”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Estimate surface normals for organized point clouds using a local neighborhood</td></tr><tr><td><code dir="auto">kernel_width</code></td><td>uint32</td><td><code dir="auto">3</code></td><td>Kernel width (must be odd, ≥ 3)</td></tr><tr><td><code dir="auto">kernel_height</code></td><td>uint32</td><td><code dir="auto">3</code></td><td>Kernel height (must be odd, ≥ 3)</td></tr><tr><td><code dir="auto">max_roughness</code></td><td>float</td><td><code dir="auto">0.2</code></td><td>Max roughness to accept a normal</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="voxel_planes">voxel_planes</h3><a class="sl-anchor-link" href="#voxel_planes"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “voxel_planes”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">voxel_size</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Voxel size for plane extraction in meters</td></tr><tr><td><code dir="auto">min_planarity</code></td><td>float</td><td><code dir="auto">0.0</code></td><td>Minimum planarity (0 = line-like, 1 = plane)</td></tr><tr><td><code dir="auto">max_roughness</code></td><td>float</td><td><code dir="auto">0.1</code></td><td>Maximum roughness to accept as plane</td></tr><tr><td><code dir="auto">max_num_points_per_plane</code></td><td>uint32</td><td><code dir="auto">1000</code></td><td>Max points per plane (≥ 100)</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="matching">matching</h2><a class="sl-anchor-link" href="#matching"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “matching”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">cloud_to_local_map</code></td><td>bool</td><td><code dir="auto">true</code></td><td>Match incoming point clouds against local map</td></tr><tr><td><code dir="auto">cloud_to_prior_map</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Also match against a given prior map</td></tr></tbody></table>
+<p>At least one must be <code dir="auto">true</code> (unless IMU measurements are provided).</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="local_map">local_map</h2><a class="sl-anchor-link" href="#local_map"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “local_map”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">map_grows</code></td><td>bool</td><td><code dir="auto">true</code></td><td>Map grows over time; if <code dir="auto">false</code>, map resets each iteration</td></tr><tr><td><code dir="auto">map_radius</code></td><td>float</td><td><code dir="auto">20.0</code></td><td>Radius around current pose to keep point clouds (meters, 0 = no limit)</td></tr><tr><td><code dir="auto">min_distance_between_cloud_origins</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Min distance before adding a new point cloud to the map (meters)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="voxel_planes-1">voxel_planes</h3><a class="sl-anchor-link" href="#voxel_planes-1"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “voxel_planes”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">min_planarity</code></td><td>float</td><td><code dir="auto">0.25</code></td><td>Minimum planarity for plane detection</td></tr><tr><td><code dir="auto">max_roughness</code></td><td>float</td><td><code dir="auto">0.15</code></td><td>Maximum roughness</td></tr><tr><td><code dir="auto">min_num_points_per_plane</code></td><td>uint32</td><td><code dir="auto">1</code></td><td>Minimum points per plane</td></tr><tr><td><code dir="auto">max_num_points_per_plane</code></td><td>uint32</td><td><code dir="auto">100</code></td><td>Maximum points per plane</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="prior_map">prior_map</h2><a class="sl-anchor-link" href="#prior_map"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “prior_map”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">filepath</code></td><td>string</td><td><code dir="auto">""</code></td><td>Path to external voxel planes map file (<code dir="auto">.vpl</code>)</td></tr><tr><td><code dir="auto">min_distance_between_cloud_origins</code></td><td>float</td><td><code dir="auto">5.0</code></td><td>Only re-match after moving this distance (meters)</td></tr></tbody></table>
+<p>Only used when <code dir="auto">matching.cloud_to_prior_map</code> is <code dir="auto">true</code>. If enabled, <code dir="auto">filepath</code> must not be empty.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="icp">icp</h2><a class="sl-anchor-link" href="#icp"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “icp”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">max_iterations</code></td><td>uint32</td><td><code dir="auto">5</code></td><td>Max ICP iterations per point cloud</td></tr><tr><td><code dir="auto">matching_method</code></td><td>string</td><td><code dir="auto">"same_voxel"</code></td><td><code dir="auto">same_voxel</code> or <code dir="auto">nearest_neighbor</code></td></tr><tr><td><code dir="auto">loss_function</code></td><td>string</td><td><code dir="auto">"trivial_loss"</code></td><td>Robust loss function (see below)</td></tr><tr><td><code dir="auto">max_point_to_point_distance</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Reject point pairs exceeding this distance (meters)</td></tr><tr><td><code dir="auto">max_point_to_plane_distance</code></td><td>float</td><td><code dir="auto">0.4</code></td><td>Reject plane correspondences exceeding this distance (meters)</td></tr><tr><td><code dir="auto">max_angle_between_normals</code></td><td>float</td><td><code dir="auto">45.0</code></td><td>Reject pairs with normals differing more than this (degrees)</td></tr><tr><td><code dir="auto">sigma_mad_limit</code></td><td>float</td><td><code dir="auto">4.0</code></td><td>Outlier threshold (median absolute deviation)</td></tr><tr><td><code dir="auto">correspondences_max_weight</code></td><td>float</td><td><code dir="auto">1000.0</code></td><td>Maximum weight per correspondence</td></tr></tbody></table>
+<p><strong>matching_method options:</strong></p>
+<ul>
+<li><code dir="auto">same_voxel</code> — fast, uses voxel grid structure for correspondences</li>
+<li><code dir="auto">nearest_neighbor</code> — slower KD-tree based, more flexible</li>
+</ul>
+<p><strong>loss_function options:</strong>
+<code dir="auto">trivial_loss</code>, <code dir="auto">huber_loss</code>, <code dir="auto">soft_l_one_loss</code>, <code dir="auto">cauchy_loss</code>, <code dir="auto">arctan_loss</code>, <code dir="auto">tukey_loss</code></p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="loop_closure_detection">loop_closure_detection</h2><a class="sl-anchor-link" href="#loop_closure_detection"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “loop_closure_detection”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Enable loop closure detection</td></tr><tr><td><code dir="auto">filter_key_clouds</code></td><td>bool</td><td><code dir="auto">true</code></td><td>Apply preprocessing filters to key point clouds</td></tr><tr><td><code dir="auto">min_distance_between_key_cloud_origins</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Min distance between key point cloud origins (meters)</td></tr><tr><td><code dir="auto">dirpath</code></td><td>string</td><td><code dir="auto">""</code></td><td>Directory for key point clouds and results (required if enabled)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="matching_of_key_clouds">matching_of_key_clouds</h3><a class="sl-anchor-link" href="#matching_of_key_clouds"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “matching_of_key_clouds”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">max_distance</code></td><td>float</td><td><code dir="auto">15.0</code></td><td>Max distance between origins to consider as loop (meters)</td></tr><tr><td><code dir="auto">min_time_difference</code></td><td>float</td><td><code dir="auto">20.0</code></td><td>Min time between key point clouds for loop closure (seconds)</td></tr></tbody></table>
+<aside aria-label="Caution" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16C11.8022 16 11.6089 16.0587 11.4444 16.1686C11.28 16.2784 11.1518 16.4346 11.0761 16.6173C11.0004 16.8001 10.9806 17.0011 11.0192 17.1951C11.0578 17.3891 11.153 17.5673 11.2929 17.7071C11.4327 17.847 11.6109 17.9422 11.8049 17.9808C11.9989 18.0194 12.2 17.9996 12.3827 17.9239C12.5654 17.8482 12.7216 17.72 12.8315 17.5556C12.9413 17.3911 13 17.1978 13 17C13 16.7348 12.8946 16.4805 12.7071 16.2929C12.5196 16.1054 12.2652 16 12 16ZM22.67 17.47L14.62 3.47003C14.3598 3.00354 13.9798 2.61498 13.5192 2.3445C13.0586 2.07401 12.5341 1.9314 12 1.9314C11.4659 1.9314 10.9414 2.07401 10.4808 2.3445C10.0202 2.61498 9.64019 3.00354 9.38 3.47003L1.38 17.47C1.11079 17.924 0.966141 18.441 0.960643 18.9688C0.955144 19.4966 1.089 20.0166 1.34868 20.4761C1.60837 20.9356 1.9847 21.3185 2.43968 21.5861C2.89466 21.8536 3.41218 21.9964 3.94 22H20.06C20.5921 22.0053 21.1159 21.8689 21.5779 21.6049C22.0399 21.341 22.4234 20.9589 22.689 20.4978C22.9546 20.0368 23.0928 19.5134 23.0895 18.9814C23.0862 18.4493 22.9414 17.9277 22.67 17.47ZM20.94 19.47C20.8523 19.626 20.7245 19.7556 20.5697 19.8453C20.4149 19.935 20.2389 19.9815 20.06 19.98H3.94C3.76111 19.9815 3.5851 19.935 3.43032 19.8453C3.27553 19.7556 3.14765 19.626 3.06 19.47C2.97223 19.318 2.92602 19.1456 2.92602 18.97C2.92602 18.7945 2.97223 18.622 3.06 18.47L11.06 4.47003C11.1439 4.30623 11.2714 4.16876 11.4284 4.07277C11.5855 3.97678 11.766 3.92599 11.95 3.92599C12.134 3.92599 12.3145 3.97678 12.4716 4.07277C12.6286 4.16876 12.7561 4.30623 12.84 4.47003L20.89 18.47C20.9892 18.6199 21.0462 18.7937 21.055 18.9732C21.0638 19.1527 21.0241 19.3312 20.94 19.49V19.47ZM12 8.00003C11.7348 8.00003 11.4804 8.10538 11.2929 8.29292C11.1054 8.48046 11 8.73481 11 9.00003V13C11 13.2652 11.1054 13.5196 11.2929 13.7071C11.4804 13.8947 11.7348 14 12 14C12.2652 14 12.5196 13.8947 12.7071 13.7071C12.8946 13.5196 13 13.2652 13 13V9.00003C13 8.73481 12.8946 8.48046 12.7071 8.29292C12.5196 8.10538 12.2652 8.00003 12 8.00003Z"></path></svg>Caution</p><div class="starlight-aside__content"><p>Cannot be enabled simultaneously with <code dir="auto">trajectory.fixed_lag_smoother</code>.</p></div></aside>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="trajectory">trajectory</h2><a class="sl-anchor-link" href="#trajectory"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “trajectory”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="fixed_lag_smoother">fixed_lag_smoother</h3><a class="sl-anchor-link" href="#fixed_lag_smoother"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “fixed_lag_smoother”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Use fixed-lag smoother instead of full batch optimization</td></tr><tr><td><code dir="auto">lag</code></td><td>float</td><td><code dir="auto">60.0</code></td><td>Optimization window size in seconds</td></tr></tbody></table>
+<p>Cannot be enabled simultaneously with <code dir="auto">loop_closure_detection</code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="imu-optional">imu (optional)</h3><a class="sl-anchor-link" href="#imu-optional"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “imu (optional)”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">accelerometer_sigma</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Accelerometer noise std dev (m/s²)</td></tr><tr><td><code dir="auto">gyroscope_sigma</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Gyroscope noise std dev (rad/s)</td></tr><tr><td><code dir="auto">integration_sigma</code></td><td>float</td><td><code dir="auto">0.0</code></td><td>Integration error std dev</td></tr><tr><td><code dir="auto">accelerometer_bias_sigma</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Accelerometer bias random walk (m/s³)</td></tr><tr><td><code dir="auto">gyroscope_bias_sigma</code></td><td>float</td><td><code dir="auto">1.0</code></td><td>Gyroscope bias random walk (rad/s²)</td></tr><tr><td><code dir="auto">average_delta_t</code></td><td>float</td><td><code dir="auto">0.0</code></td><td>Expected IMU interval in seconds (0 = auto-detect)</td></tr><tr><td><code dir="auto">acceleration_unit_is_g</code></td><td>bool</td><td><code dir="auto">false</code></td><td>If <code dir="auto">true</code>, accelerometer data is in g units</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="absolute_position_measurements-optional">absolute_position_measurements (optional)</h3><a class="sl-anchor-link" href="#absolute_position_measurements-optional"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “absolute_position_measurements (optional)”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">previous_cloud_idx_offset</code></td><td>uint32</td><td><code dir="auto">20</code></td><td>How many point clouds back to search for measurements</td></tr><tr><td><code dir="auto">interpolation_max_time_diff_sec</code></td><td>float</td><td><code dir="auto">0.5</code></td><td>Max time difference for interpolation (seconds)</td></tr><tr><td><code dir="auto">min_elapsed_time_since_last_added_measurement_sec</code></td><td>float</td><td><code dir="auto">0.5</code></td><td>Time gate between measurements (seconds)</td></tr><tr><td><code dir="auto">min_distance_to_last_added_measurement</code></td><td>float</td><td><code dir="auto">5.0</code></td><td>Distance gate between measurements (meters)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="static_transforms">static_transforms</h3><a class="sl-anchor-link" href="#static_transforms"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “static_transforms”</span></a></div>
+<p>Array of sensor-to-base transforms:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">frame</code></td><td>string</td><td><code dir="auto">"lidar"</code></td><td>Sensor frame name</td></tr><tr><td><code dir="auto">base_T_frame.translation</code></td><td>float[3]</td><td><code dir="auto">[0, 0, 0]</code></td><td>Translation x, y, z (meters)</td></tr><tr><td><code dir="auto">base_T_frame.rotation</code></td><td>float[4]</td><td><code dir="auto">[0, 0, 0, 1]</code></td><td>Quaternion qx, qy, qz, qw</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="initial_base_pose">initial_base_pose</h3><a class="sl-anchor-link" href="#initial_base_pose"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “initial_base_pose”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">translation</code></td><td>float[3]</td><td><code dir="auto">[0, 0, 0]</code></td><td>Starting position x, y, z (meters)</td></tr><tr><td><code dir="auto">rotation</code></td><td>float[4]</td><td><code dir="auto">[0, 0, 0, 1]</code></td><td>Starting orientation qx, qy, qz, qw</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="artifacts">artifacts</h2><a class="sl-anchor-link" href="#artifacts"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “artifacts”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">true</code></td><td>Save trajectory and optional point cloud artifacts</td></tr><tr><td><code dir="auto">dirpath</code></td><td>string</td><td><code dir="auto">""</code></td><td>Output directory (required if enabled)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="save_clouds">save_clouds</h3><a class="sl-anchor-link" href="#save_clouds"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “save_clouds”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Save individual registered point clouds to disk</td></tr><tr><td><code dir="auto">generate_prior_map</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Generate a prior map from saved point clouds</td></tr></tbody></table>
+<p>When enabled, the following filters can be applied independently to saved point clouds (same structure as <code dir="auto">clouds</code> filters above):</p>
+<ul>
+<li><code dir="auto">distance_filter</code> — <code dir="auto">{enabled, min_distance, max_distance}</code></li>
+<li><code dir="auto">intensity_filter</code> — <code dir="auto">{enabled, min_intensity}</code></li>
+<li><code dir="auto">profile_filter</code> — <code dir="auto">{enabled, row_interval, col_interval}</code></li>
+<li><code dir="auto">normal_estimation</code> — <code dir="auto">{enabled, kernel_width, kernel_height}</code></li>
+</ul>
+<div class="sl-heading-wrapper level-h4"><h4 id="tiling">tiling</h4><a class="sl-anchor-link" href="#tiling"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “tiling”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Split saved point clouds into spatial tiles</td></tr><tr><td><code dir="auto">tile_size</code></td><td>int[3]</td><td><code dir="auto">[50, 50, 50]</code></td><td>Tile size in x, y, z (meters)</td></tr><tr><td><code dir="auto">voxel_filter.enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Apply voxel filter to tiles</td></tr><tr><td><code dir="auto">voxel_filter.voxel_size</code></td><td>float</td><td><code dir="auto">0.1</code></td><td>Voxel size for tile downsampling (meters)</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="debug_mode">debug_mode</h2><a class="sl-anchor-link" href="#debug_mode"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “debug_mode”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">false</code></td><td>Save intermediate processing stages</td></tr><tr><td><code dir="auto">dirpath</code></td><td>string</td><td><code dir="auto">""</code></td><td>Debug output directory (required if enabled)</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="send_visualization_data">send_visualization_data</h2><a class="sl-anchor-link" href="#send_visualization_data"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “send_visualization_data”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code dir="auto">enabled</code></td><td>bool</td><td><code dir="auto">true</code></td><td>Send real-time data to slamlab-visualization</td></tr><tr><td><code dir="auto">receiver_ip_address</code></td><td>string</td><td><code dir="auto">"127.0.0.1"</code></td><td>IP address of visualization client</td></tr></tbody></table> </div> <footer class="sl-flex astro-dd75lh4b"> <div class="meta sl-flex astro-dd75lh4b">   </div> <div class="pagination-links print:hidden astro-ebiwjie7" dir="ltr"> <a href="/configuration/" rel="prev" class="astro-ebiwjie7"> <svg aria-hidden="true" class="astro-ebiwjie7 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-ebiwjie7"> Previous <br class="astro-ebiwjie7"> <span class="link-title astro-ebiwjie7">Overview</span> </span> </a> <a href="/configuration/slamlab-global-map/" rel="next" class="astro-ebiwjie7"> <svg aria-hidden="true" class="astro-ebiwjie7 astro-uxez3dfa" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-ebiwjie7"> Next <br class="astro-ebiwjie7"> <span class="link-title astro-ebiwjie7">slamlab_global_map</span> </span> </a> </div>  </footer> </div> </div>  </main> </div> </div> </div> </div> </body></html>
